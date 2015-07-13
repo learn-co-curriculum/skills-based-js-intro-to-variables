@@ -46,7 +46,7 @@ cute_animal
 # => NameError: undefined local variable or method `cute_animal' for main:Object
 ```
 
-Unlike Ruby, JavaScript will only defaulting variables to having a limited scope if you use the `var` keyword. For instance:
+Unlike Ruby, JavaScript will make a variable have local scope only if you use the keyword `var`. For instance:
 
 ```javascript
 function makeVariable() {
