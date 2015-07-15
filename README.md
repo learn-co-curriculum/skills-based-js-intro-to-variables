@@ -11,7 +11,7 @@
 
 ## About
 
-As in Ruby, variables in JavaScript are used to store information/data that will be used in our program.  A variable can point to almost any type of value including numbers, strings, arrays, and hashes.
+As in Ruby, variables in JavaScript are used to store data that will be used in our program.  A variable can point to almost any type of value including numbers, strings, arrays, and hashes.
 
 Just like Ruby, variables are assigned values using the `=` operator. Variable names are typically all lower case, and in the case of multiple words, the words are joined together using [lowerCamelCase](http://c2.com/cgi/wiki?LowerCamelCase).
 
@@ -31,7 +31,7 @@ var someLocalNumber = 10; // can only be accessed within the current scope
 someGlobalNumber = 42; // is now window.someGlobalNumber and can be accessed anywhere
 ```
 
-These consequences are due to JavaScript's approach to scoping. In Ruby, we didn't have to worry too much about scoping because all variables assigned within a method were scoped to just that method. For instance:
+These consequences are due to JavaScript's approach to scoping. In Ruby, we didn't have to worry too much about scoping because all variables assigned within a method are scoped to just that method. For instance:
 
 ```ruby
 def make_variable
@@ -61,11 +61,11 @@ cuteAnimal;
 // "sugar glider"
 ```
 
-See how Ruby forgets that there is a variable outside of the method but JavaScript doesn't? Now might be a good time to drop to your knees, throw your fists into the air, and scream-ask, "What?!?" 
+See how Ruby forgets that there is a variable outside of the method but JavaScript doesn't? Now might be a good time to drop to your knees, throw your fists into the air, and scream-ask, "What?!?"
 
 Let me give you a second. You ready? Okay, here's what's going on:
 
-Ruby automatically locally scopes variables but JavaScript does not unless you use the keyword `var`. Without this keyword, variables have a global scope. JavaScript knew about the variable `cuteAnimal` because we accidentally gave it a global scope. To make it local in scope (usually what you want), you'd have to add that `var` keyword, like so:
+Ruby automatically locally scopes variables but JavaScript does not unless you use the keyword `var`. Without this keyword, variables have a global scope. JavaScript knew about the variable `cuteAnimal` because we accidentally gave it a global scope. To make it local in scope (always what you want; don't pollute that global namespace with variables!), you'd have to add that `var` keyword, like so:
 
 ```javascript
 function makeVariable() {
@@ -93,7 +93,7 @@ function makeNumber() {
   return num;
 }
 
-makeNumber()
+makeNumber();
 // Returns 11 showing that the local variable assignment overwrote the global variable assignment
 
 num;
