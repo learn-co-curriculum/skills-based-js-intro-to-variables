@@ -182,3 +182,5 @@ Some people prefer to keep new lines between each new variable assignment, other
 * [MDN - Var Keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var)
 * [MSDN - Variable Scope](https://msdn.microsoft.com/library/bzt2dkta(v=vs.94).aspx)
 * [StackOverflow - How to define multiple variables on a single line?](http://stackoverflow.com/q/4166785/2890716)
+
+<a href='https://learn.co/lessons/intro-to-variables.js' data-visibility='hidden'>View this lesson on Learn.co</a>
