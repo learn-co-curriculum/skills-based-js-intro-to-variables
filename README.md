@@ -13,9 +13,87 @@ As in Ruby, variables in JavaScript are used to store data that will be used in 
 
 Just like Ruby, variables are assigned values using the `=` operator. Variable names are typically all lower case, and in the case of multiple words, the words are joined together using [lowerCamelCase](http://c2.com/cgi/wiki?LowerCamelCase).
 
+## Declaring Variables
+
+Lets say I have the variable `word`. In Ruby, to assign a value to this variable, we would simple do 
+
+```ruby
+word = "hey"
+```
+
+Ruby would understand automatically that we're creating a new variable and assigning it a value. If this variable was created in a method, it would only exist in the scope of the method. If it was created in a block, it would only exist in the scope of that block. Later in the method or block when you used that variable, Ruby wouldn't think to look outside the block for the variable definition.
+
+JavaScript variables operates a little differently, and scope in JavaScript operates a lot differently. JavaScript variables must be declared before they can be assigned a value. If you don't declare your variable, JavaScript will bubble up through layers of scope (up out of the function you defined your variable in), till it finds a declared variable with that name. This means you could end up using different values than you thought you were.
+
+Go ahead and open up a Chrome or Firefox browser window, and open up the Developer Tools. Feel free to code along with these examples.
+
+Declaring a variable without defining a value looks like this:
+
+```js
+var word;
+```
+
+Now try entering `word` in console. You should see `Undefined` because we never defined a value for this variable. Now I can assign `word` a value:
+```js
+word = "hey";
+```
+
+When you enter `rword` you should see `hey`. But that feels pretty tedious, using two lines like that when in Ruby we could do it in one. Thankfully we can declare and define a variable all on one line:
+
+```js
+var word = "hey";
+```
+
+## Multi-line Variable Assignment
+
+Let's say I needed to declare and define multiple variables. It feels like a lot to have to repeat `var` over and over again. JavaScript allows us to do multi-line variable assignment to alleviate this pain. Every variable must be separated with a comma, and end the entire line must end with a semicolon.
+
+Let's condense the below code into one line:
+
+```javascript
+var a = 5;
+var b = 2;
+var c = 3;
+var d = {};
+var e = [];
+```
+
+The above is equivalent to:
+
+```javascript
+var a = 5,
+    b = 2,
+    c = 3,
+    d = {},
+    e = [];
+```
+
+which can be converted to:
+
+```javascript
+var a = 5, b = 2, c = 3, d = {}, e = [];
+```
+
+Try returning each variable in the console. You should see the appropriate values returned for each one.
+
+Some people prefer to keep new lines between each new variable assignment, other people like the look of the single line. Whichever way you swing, the important thing to remember is [to use commas to separate each variable](http://stackoverflow.com/a/4166789/2890716).
+
+## Reassigning Variable Value
+
+Changing the value of a variable in JavaScript works just in the same way as it does in Ruby:
+
+```js
+var word = "hey";
+word; 
+// returns "hey"
+var word = "javascript";
+word;
+// returns "javascript";
+```
+
 ## Local vs. Global Variables
 
-You can declare a variable in two ways but each have different consequences:
+Just like Ruby, JavaScript also has local and global variables. Local variables are declared using the `var` keyword, and global variables are defined without it.
 
 * Declaring a variable with `var` keyword:
 
@@ -117,63 +195,6 @@ greeting
 // This demonstrates that the variable greeting is still local instead of global
 ```
 
-## Declaring Variables
-
-A pattern that you'll see in JavaScript that you probably didn't see in Ruby is variable declaration. In JavaScript, variables can also be declared, but not necessarily assigned a value. The following two are equivalent:
-
-Declaration and value assignment in one line:
-
-```javascript
-var greeting = "hello";
-
-greeting;
-// Returns "hello"
-```
-
-Declaration before assigning a value:
-
-```javascript
-var greeting;
-
-greeting;
-// Returns undefined
-
-greeting = "hello";
-
-greeting;
-// Returns "hello"
-```
-## Multi-line Variable Assignment
-
-Variables can also be assigned at once with multiple lines, using commas to delimit each. You must terminate the assignment with a semicolon.
-
-Let's condense the below code into one line:
-
-```javascript
-var a = 5;
-var b = 2;
-var c = 3;
-var d = {};
-var e = [];
-```
-
-The above is equivalent to:
-
-```javascript
-var a = 5
-  , b = 2
-  , c = 3
-  , d = {}
-  , e = [];
-```
-
-which can be converted to:
-
-```javascript
-var a = 5, b = 2, c = 3, d = {}, e = [];
-```
-
-Some people prefer to keep new lines between each new variable assignment, other people like the look of the single line. Whichever way you swing, the important thing to remember is [to use commas to separate each variable](http://stackoverflow.com/a/4166789/2890716).
 
 ## Resources
 
