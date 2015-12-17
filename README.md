@@ -1,13 +1,11 @@
 # JavaScript Variables
 
-## Overview
+## Objectives 
++ Declare a variable without assigning a value
++ Declare and define a variable
++ multi-line variable assignment
++ Explain how local and global variables differ
 
-* About
-* Local vs. Global Variables
-* Changing Variable Values
-* Declaring Variables
-* Multi-line Variable Assignment
-* Resources
 
 ## About
 
