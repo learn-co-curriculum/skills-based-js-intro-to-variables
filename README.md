@@ -163,18 +163,23 @@ It's been mentioned already, but again, it is best to use the key word `var` bef
 Local variable assignment can overwrite global variable assignment:
 
 ```javascript
-function makeNumber() {
-  num = 10;     // Declares a global variable and returns 10
-  var num = 11; // Declares a non-global variable and returns 11
-  return num;
+volume = 10; //declares a global variable called volume and sets it to 10
+
+function returnEleven () {
+  var volume = 11;  //declares a local variable called volume and sets it to 11
+  return volume;
 }
 
-makeNumber();
-// Returns 11 showing that the local variable assignment overwrote the global variable assignment
+returnEleven(); // returns 11
+volume; // the global variable is still 10
 
-num;
-// ReferenceError: num is not defined
-// This demonstrates that the global variable num became a local variable
+function goToEleven(){
+  volume = 11;  //changes the global variable to 11
+  return volume;
+}
+
+goToEleven(); // returns 11
+volume; // the global variable volume has been changed to 11
 ```
 
 However, global variable assignment can't overwrite local variable assignment, rather it simply reassigns the value of the local variable:
