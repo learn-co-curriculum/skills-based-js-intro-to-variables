@@ -38,7 +38,7 @@ Now try entering `word` in console. You should see `Undefined` because we never 
 word = "hey";
 ```
 
-When you enter `rword` you should see `hey`. But that feels pretty tedious, using two lines like that when in Ruby we could do it in one. Thankfully we can declare and define a variable all on one line:
+When you enter `word` you should see `hey`. This works, but feels pretty tedious. Thankfully we can declare and define a variable all on one line:
 
 ```js
 var word = "hey";
@@ -86,7 +86,7 @@ Changing the value of a variable in JavaScript works just in the same way as it 
 var word = "hey";
 word; 
 // returns "hey"
-var word = "javascript";
+word = "javascript";
 word;
 // returns "javascript";
 ```
