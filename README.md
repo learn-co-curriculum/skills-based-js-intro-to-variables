@@ -93,20 +93,29 @@ word;
 
 ## Local vs. Global Variables
 
-Just like Ruby, JavaScript also has local and global variables. Local variables are declared using the `var` keyword, and global variables are defined without it.
+Just like Ruby, JavaScript also has local and global variables. In Ruby, a program is written within the scope `Main`. The JavaScript equivalent is `window` (the browser window).
 
-* Declaring a variable with `var` keyword:
+We'll dive much deeper into scope in JavaScript, but for all intents and purposes, a global variable is any variable defined within the `window`. You can also think of it as any variable that exists outside of a function (or method) is a global variable. 
 
-```javascript
-var someLocalNumber = 10; // can only be accessed within the current scope
-```
 
-* Declaring a variable without `var` keyword:
 
 ```javascript
-someGlobalNumber = 42; // is now window.someGlobalNumber and can be accessed anywhere
+var firstNum = 10; // is defined in the window and is thus accessible by the entire program
+window.firstNum;
+// returns 10
 ```
 
+But if we declare a variable inside a function:
+
+```js
+function myFunk(){
+  var funky = true;
+}
+
+myFunk();
+window.funky();
+// returns undefined because funky is variable defined inside a function and is thus a variable local to that function.
+```
 These consequences are due to JavaScript's approach to scoping. In Ruby, we didn't have to worry too much about scoping because all variables assigned within a method are scoped to just that method. For instance:
 
 ```ruby
