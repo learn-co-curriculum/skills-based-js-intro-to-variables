@@ -183,4 +183,4 @@ Some people prefer to keep new lines between each new variable assignment, other
 * [MSDN - Variable Scope](https://msdn.microsoft.com/library/bzt2dkta(v=vs.94).aspx)
 * [StackOverflow - How to define multiple variables on a single line?](http://stackoverflow.com/q/4166785/2890716)
 
-<a href='https://learn.co/lessons/intro-to-variables.js' data-visibility='hidden'>View this lesson on Learn.co</a>
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/intro-to-variables.js' title='JavaScript Variables'>JavaScript Variables</a> on Learn.co and start learning to code for free.</p>
