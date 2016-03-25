@@ -1,6 +1,6 @@
 # JavaScript Variables
 
-## Objectives 
+## Objectives
 + Declare a variable without assigning a value
 + Declare and define a variable
 + multi-line variable assignment
@@ -15,7 +15,7 @@ Just like Ruby, variables are assigned values using the `=` operator. Variable n
 
 ## Declaring Variables
 
-Lets say I have the variable `word`. In Ruby, to assign a value to this variable, we would simple do 
+Lets say I have the variable `word`. In Ruby, to assign a value to this variable, we would simple do
 
 ```ruby
 word = "hey"
@@ -84,7 +84,7 @@ Changing the value of a variable in JavaScript works just in the same way as it 
 
 ```js
 var word = "hey";
-word; 
+word;
 // returns "hey"
 word = "javascript";
 word;
@@ -95,7 +95,7 @@ word;
 
 Just like Ruby, JavaScript also has local and global variables. In Ruby, a program is written within the scope `Main`. The JavaScript equivalent is `window` (the browser window).
 
-We'll dive much deeper into scope in JavaScript, but for all intents and purposes, a global variable is any variable defined within the `window`. You can also think of it as any variable that exists outside of a function (or method) is a global variable. 
+We'll dive much deeper into scope in JavaScript, but for all intents and purposes, a global variable is any variable defined within the `window`. You can also think of it as any variable that exists outside of a function (or method) is a global variable.
 
 
 
@@ -146,11 +146,11 @@ cuteAnimal;
 // "sugar glider"
 ```
 
-See how Ruby forgets that there is a variable outside of the method but JavaScript doesn't? Now might be a good time to drop to your knees, throw your fists into the air, and scream-ask, "What?!?"
+Now might be a good time to drop to your knees, throw your fists into the air, and scream-ask, "What?!?"
 
 Let me give you a second. You ready? Okay, here's what's going on:
 
-Ruby automatically locally scopes variables but JavaScript does not unless you use the keyword `var`. Without this keyword, variables have a global scope. JavaScript knew about the variable `cuteAnimal` because we accidentally gave it a global scope. To make it local in scope (always what you want; don't pollute that global namespace with variables!), you'd have to add that `var` keyword, like so:
+JavaScript does not treat variables as local by default; you must use the keyword `var`. Without this keyword, variables have a global scope. JavaScript knew about the variable `cuteAnimal` because we accidentally gave it a global scope. To make it local in scope (always what you want; don't pollute that global namespace with variables!), you'd have to add that `var` keyword, like so:
 
 ```javascript
 function makeVariable() {
@@ -166,6 +166,29 @@ cuteAnimal;
 ```
 
 It's been mentioned already, but again, it is best to use the key word `var` before declaring a variable. This ensures that the variable is set to the current scope. If `var` is not used in defining a new variable it becomes global and is accessible throughout the program.
+
+Keep in mind too that the same variable name used in different scopes is effectively a different variable.
+We sometimes refer to repeating a variable name in an inner scope as "shadowing" — it's best to avoid,
+as you'll quickly see how confusing it can be:
+
+``` javascript
+var cuteAnimal = 'quokka';
+
+function makeVariable() {
+  var cuteAnimal = 'sugar glider';
+  return cuteAnimal;
+}
+
+makeVariable();
+// 'sugar glider'
+
+cuteAnimal;
+// 'quokka'
+
+```
+
+See? Nothing breaks, but if you have a lot of shadowed variables (or even just a lot of space between a
+variable's initial declaration and its subsequent change(s)), you're gonna have a bad time.
 
 ## Changing Variable Values
 
