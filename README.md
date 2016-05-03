@@ -9,40 +9,127 @@
 
 ## About
 
-As in Ruby, variables in JavaScript are used to store data that will be used in our program.  A variable can point to almost any type of value including numbers, strings, arrays, and hashes.
+Variables in JavaScript are used to store data that will be used in our program.
+A variable can point to almost any type of value including numbers, strings,
+arrays, objects, and functions.
 
-Just like Ruby, variables are assigned values using the `=` operator. Variable names are typically all lower case, and in the case of multiple words, the words are joined together using [lowerCamelCase](http://c2.com/cgi/wiki?LowerCamelCase).
+Variables are assigned values using the `=` operator. Variable names are
+typically all lower case; in the case of multiple words, the words are joined
+together using [lowerCamelCase](http://c2.com/cgi/wiki?LowerCamelCase).
 
 ## Declaring Variables
 
-Lets say I have the variable `word`. In Ruby, to assign a value to this variable, we would simple do
+Lets say I have the variable `word`. We could, if we wanted to, write
 
-```ruby
-word = "hey"
+``` javascript
+word = 'bird'
 ```
 
-Ruby would understand automatically that we're creating a new variable and assigning it a value. If this variable was created in a method, it would only exist in the scope of the method. If it was created in a block, it would only exist in the scope of that block. Later in the method or block when you used that variable, Ruby wouldn't think to look outside the block for the variable definition.
+in order to create our variable and assign it the value of the string `'bird'`.
+Thing is, now we've declared a _global variable_. Global variables can be
+accessed anywhere in an application, which can lead to strange behavior. What
+if, for example, we wanted `word`'s value to be something other than `'bird'`
+at some point in the application? Or what if we needed to make use of a variable
+called `word` but not _this particular `word`_?
 
-JavaScript variables operates a little differently, and scope in JavaScript operates a lot differently. JavaScript variables must be declared before they can be assigned a value. If you don't declare your variable, JavaScript will bubble up through layers of scope (up out of the function you defined your variable in), till it finds a declared variable with that name. This means you could end up using different values than you thought you were.
+Clearly globals aren't the way to go.
 
-Go ahead and open up a Chrome or Firefox browser window, and open up the Developer Tools. Feel free to code along with these examples.
+### `var`
 
-Declaring a variable without defining a value looks like this:
+In the olden days (1995), JavaScript had one way to declare a non-global
+variable: `var`. Using the keyword `var` binds the variable to the _local
+scope_, so we might as well call it a _"local variable."_
 
-```js
+Here's how this works — follow along in your console!
+
+``` javascript
+// declare the variable
+
 var word;
+
+// assign a value to the variable
+word = 'bird';
+
+console.log(word); // 'bird'
+
+// assign another value to the variable
+word = 'dog';
+
+console.log(word) // 'dog'
 ```
 
-Now try entering `word` in console. You should see `Undefined` because we never defined a value for this variable. Now I can assign `word` a value:
-```js
-word = "hey";
+Now we have declared a local variable `word`, and we can assign and reassign its
+value as we please.
+
+We can perform variable declaration and assignment on the same line to save
+space:
+
+``` javascript
+var word = 'bird';
 ```
 
-When you enter `word` you should see `hey`. This works, but feels pretty tedious. Thankfully we can declare and define a variable all on one line:
+What does it mean that `word` is a local variable? Well, if we're just entering
+it in the console, not much — the variable still becomes a property of `window`,
+just like global variables. (Go ahead, try typing `window.word` in the console —
+prepare to be amazed!)
 
-```js
-var word = "hey";
+But inside a function, things get more interesting. (Don't worry, we'll go over
+functions in more detail soon.) Variables in JavaScript have _function-level
+scope_, meaning that variables are bound to the function context in which they're
+declared. An example will make what we mean clearer:
+
+``` javascript
+function speaker() {
+  var sentence = 'Bird is the word.';
+
+  console.log(sentence)
+}
 ```
+
+If we call `speaker()` in console, we'll see `'Bird is the word.'` logged out — all
+is well. But if we call `console.log(sentence)` outside of the `speaker` function,
+we'll get an error — the variable `sentence` is _bound_ to the context of the
+function `speaker`.
+
+If, however, we write
+
+``` javascript
+function speaker() {
+  sentence = 'Bird is the word.';
+
+  console.log(sentence);
+```
+
+and run `speaker()`, we can now call `console.log(sentence)` outside of the `speaker`
+function because we have declared the variable `sentence` without the `var` keyword —
+it's now a global variable.
+
+### `const`
+
+ECMAScript 6 introduces the [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) keyword.
+MDN defines this keyword:
+
+> The *`const` declaration* creates a read-only reference to a value. It does not mean the value it holds is immutable, just that the variable identifier cannot be reassigned.
+
+``` javascript
+const tryToChangeMe = 'foo';
+
+tryToChangeMe = 'bar'; // error!
+
+const notImmutable = {};
+
+notImmutable.prop = 'change!';
+
+console.log(notImmutable); // includes `prop`
+```
+
+Additionally, variables declared with `const` are block-scoped — you can read more
+about the distinction between function- and block-scope [here](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch3.md).
+
+### `let`
+
+ECMAScript 6 also makes `let` official. The `let` keyword behaves essentially like
+`var`, with the important distinction of making the variable block-scoped.
 
 ## Multi-line Variable Assignment
 
@@ -78,94 +165,7 @@ Try returning each variable in the console. You should see the appropriate value
 
 Some people prefer to keep new lines between each new variable assignment, other people like the look of the single line. Whichever way you swing, the important thing to remember is [to use commas to separate each variable](http://stackoverflow.com/a/4166789/2890716).
 
-## Reassigning Variable Value
-
-Changing the value of a variable in JavaScript works just in the same way as it does in Ruby:
-
-```js
-var word = "hey";
-word;
-// returns "hey"
-word = "javascript";
-word;
-// returns "javascript";
-```
-
-## Local vs. Global Variables
-
-Just like Ruby, JavaScript also has local and global variables. In Ruby, a program is written within the scope `Main`. The JavaScript equivalent is `window` (the browser window).
-
-We'll dive much deeper into scope in JavaScript, but for all intents and purposes, a global variable is any variable defined within the `window`. You can also think of it as any variable that exists outside of a function (or method) is a global variable.
-
-
-
-```javascript
-var firstNum = 10; // is defined in the window and is thus accessible by the entire program
-window.firstNum;
-// returns 10
-```
-
-But if we declare a variable inside a function:
-
-```js
-function myFunk(){
-  var funky = true;
-}
-
-myFunk();
-window.funky;
-// returns undefined because funky is variable defined inside a function and is thus a variable local to that function.
-```
-These consequences are due to JavaScript's approach to scoping. In Ruby, we didn't have to worry too much about scoping because all variables assigned within a method are scoped to just that method. For instance:
-
-```ruby
-def make_variable
-  cute_animal = "sugar glider"
-  return cute_animal
-end
-
-make_variable
-# => "sugar glider"
-
-cute_animal
-# => NameError: undefined local variable or method `cute_animal' for main:Object
-```
-
-Unlike Ruby, JavaScript will make a variable have local scope only if you use the keyword `var`. For instance:
-
-```javascript
-function makeVariable() {
-  cuteAnimal = "sugar glider";
-  return cuteAnimal;
-}
-
-makeVariable();
-// "sugar glider"
-
-cuteAnimal;
-// "sugar glider"
-```
-
-Now might be a good time to drop to your knees, throw your fists into the air, and scream-ask, "What?!?"
-
-Let me give you a second. You ready? Okay, here's what's going on:
-
-JavaScript does not treat variables as local by default; you must use the keyword `var`. Without this keyword, variables have a global scope. JavaScript knew about the variable `cuteAnimal` because we accidentally gave it a global scope. To make it local in scope (always what you want; don't pollute that global namespace with variables!), you'd have to add that `var` keyword, like so:
-
-```javascript
-function makeVariable() {
-  var cuteAnimal = "sugar glider";
-  return cuteAnimal;
-}
-
-makeVariable();
-// "sugar glider"
-
-cuteAnimal;
-// ReferenceError: cuteAnimal is not defined
-```
-
-It's been mentioned already, but again, it is best to use the key word `var` before declaring a variable. This ensures that the variable is set to the current scope. If `var` is not used in defining a new variable it becomes global and is accessible throughout the program.
+## Same Variable, Different Scopes
 
 Keep in mind too that the same variable name used in different scopes is effectively a different variable.
 We sometimes refer to repeating a variable name in an inner scope as "shadowing" — it's best to avoid,
@@ -238,7 +238,6 @@ greeting
 * [MDN - Var Keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var)
 * [MSDN - Variable Scope](https://msdn.microsoft.com/library/bzt2dkta(v=vs.94).aspx)
 * [StackOverflow - How to define multiple variables on a single line?](http://stackoverflow.com/q/4166785/2890716)
-
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/intro-to-variables.js' title='JavaScript Variables'>JavaScript Variables</a> on Learn.co and start learning to code for free.</p>
+* [You Don't Know JS - Function vs. Block Scope](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch3.md)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/intro-to-variables.js'>Intro To Variables in JS</a> on Learn.co and start learning to code for free.</p>
