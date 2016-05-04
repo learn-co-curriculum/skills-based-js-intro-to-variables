@@ -232,6 +232,43 @@ greeting
 // This demonstrates that the variable greeting is still local instead of global
 ```
 
+## Function Expressions
+
+What, what's a section on functions doing in this variables lesson? Well, prepare for a mind-blowing revelation.
+
+![kapow](http://i.giphy.com/OK27wINdQS5YQ.gif)
+
+You can assign functions as a value to variables. This means that we can take this
+
+``` javascript
+function square(number) {
+  return number * number
+}
+```
+
+and combine it with this
+
+``` javascript
+const square // or `var square` or `let square`
+```
+
+to get this
+
+``` javascript
+const square = function square(number) {
+  return number * number
+}
+```
+
+Typically, we'll omit the name from the function in this case, because in this simple case JavaScript will pick up the name of the variable:
+
+``` javascript
+const square = function(number) {
+  return number * number
+}
+```
+
+But, as you can read about [here](https://kangax.github.io/nfe/#named-expr), sometimes giving the function in a function expression an identifier can be a good idea.
 
 ## Resources
 
