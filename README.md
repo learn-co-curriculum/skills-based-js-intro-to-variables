@@ -3,7 +3,7 @@
 ## Objectives
 + Declare a variable without assigning a value
 + Declare and define a variable
-+ multi-line variable assignment
++ Explain multi-line variable assignment (with the comma operator!)
 + Explain how local and global variables differ
 
 
