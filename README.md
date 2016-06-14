@@ -1,21 +1,17 @@
 # JavaScript Variables
 
 ## Objectives
-+ Declare a variable without assigning a value
-+ Declare and define a variable
-+ Explain multi-line variable assignment (with the comma operator!)
-+ Explain how local and global variables differ
 
+- Declare a variable without assigning a value
+- Declare and define a variable
+- Explain multi-line variable assignment (with the comma operator!)
+- Explain how local and global variables differ
 
 ## About
 
-Variables in JavaScript are used to store data that will be used in our program.
-A variable can point to almost any type of value including numbers, strings,
-arrays, objects, and functions.
+Variables in JavaScript are used to store data that will be used in our program. A variable can point to almost any type of value including numbers, strings, arrays, objects, and functions.
 
-Variables are assigned values using the `=` operator. Variable names are
-typically all lower case; in the case of multiple words, the words are joined
-together using [lowerCamelCase](http://c2.com/cgi/wiki?LowerCamelCase).
+Variables are assigned values using the `=` operator. Variable names are typically all lower case; in the case of multiple words, the words are joined together using [lowerCamelCase](http://c2.com/cgi/wiki?LowerCamelCase).
 
 ## Declaring Variables
 
@@ -25,26 +21,20 @@ Lets say I have the variable `word`. We could, if we wanted to, write
 word = 'bird'
 ```
 
-in order to create our variable and assign it the value of the string `'bird'`.
-Thing is, now we've declared a _global variable_. Global variables can be
-accessed anywhere in an application, which can lead to strange behavior. What
-if, for example, we wanted `word`'s value to be something other than `'bird'`
-at some point in the application? Or what if we needed to make use of a variable
-called `word` but not _this particular `word`_?
+in order to create our variable and assign it the value of the string `'bird'`. Thing is, now we've declared a _global variable_. Global variables can be accessed anywhere in an application, which can lead to strange behavior. What if, for example, we wanted `word`'s value to be something other than `'bird'` at some point in the application? Or what if we needed to make use of a variable called `word` but not _this particular `word`_?
+
+In the browser, global variables are all properties of `window`. What is `window`? Well, it's the — erm — window in which the browser displays the current page. It holds a whole bunch of things (which is probably obvious), global variables among them.
 
 Clearly globals aren't the way to go.
 
 ### `var`
 
-In the olden days (1995), JavaScript had one way to declare a non-global
-variable: `var`. Using the keyword `var` binds the variable to the _local
-scope_, so we might as well call it a _"local variable."_
+In the olden days (1995), JavaScript had one way to declare a non-global variable, `var`. Using the keyword `var` creates _local variable_, meaning that it is only accessible inside the current function in which it is declared. (If it's not declared inside a function, it's actually still global!)
 
 Here's how this works — follow along in your console!
 
 ``` javascript
 // declare the variable
-
 var word;
 
 // assign a value to the variable
@@ -58,25 +48,18 @@ word = 'dog';
 console.log(word) // 'dog'
 ```
 
-Now we have declared a local variable `word`, and we can assign and reassign its
-value as we please.
+Now we have declared a local variable `word`, and we can assign and reassign its value as we please.
 
-We can perform variable declaration and assignment on the same line to save
-space:
+We can perform variable declaration and assignment on the same line to save space:
 
 ``` javascript
 var word = 'bird';
 ```
 
-What does it mean that `word` is a local variable? Well, if we're just entering
-it in the console, not much — the variable still becomes a property of `window`,
-just like global variables. (Go ahead, try typing `window.word` in the console —
-prepare to be amazed!)
+What does it mean that `word` is a local variable? Well, if we're just entering it in the console, not much — the variable still becomes a property of `window`, just like global variables (as mentioned above). (Go ahead, try typing `window.word` in the console — prepare to be amazed!)
 
-But inside a function, things get more interesting. (Don't worry, we'll go over
-functions in more detail soon.) Variables in JavaScript have _function-level
-scope_, meaning that variables are bound to the function context in which they're
-declared. An example will make what we mean clearer:
+But inside a function, things get more interesting. Variables in JavaScript have _function-level scope_, meaning that variables are bound to the function context in which they're declared. An example will make what we mean clearer.
+
 
 ``` javascript
 function speaker() {
@@ -86,10 +69,7 @@ function speaker() {
 }
 ```
 
-If we call `speaker()` in console, we'll see `'Bird is the word.'` logged out — all
-is well. But if we call `console.log(sentence)` outside of the `speaker` function,
-we'll get an error — the variable `sentence` is _bound_ to the context of the
-function `speaker`.
+If we call `speaker()` in console, we'll see `'Bird is the word.'` logged out — all is well. But if we call `console.log(sentence)` outside of the `speaker` function, we'll get an error — the variable `sentence` is _bound_ to the context of the function `speaker`.
 
 If, however, we write
 
@@ -100,36 +80,7 @@ function speaker() {
   console.log(sentence);
 ```
 
-and run `speaker()`, we can now call `console.log(sentence)` outside of the `speaker`
-function because we have declared the variable `sentence` without the `var` keyword —
-it's now a global variable.
-
-### `const`
-
-ECMAScript 6 introduces the [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) keyword.
-MDN defines this keyword:
-
-> The *`const` declaration* creates a read-only reference to a value. It does not mean the value it holds is immutable, just that the variable identifier cannot be reassigned.
-
-``` javascript
-const tryToChangeMe = 'foo';
-
-tryToChangeMe = 'bar'; // error!
-
-const notImmutable = {};
-
-notImmutable.prop = 'change!';
-
-console.log(notImmutable); // includes `prop`
-```
-
-Additionally, variables declared with `const` are block-scoped — you can read more
-about the distinction between function- and block-scope [here](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch3.md).
-
-### `let`
-
-ECMAScript 6 also makes `let` official. The `let` keyword behaves essentially like
-`var`, with the important distinction of making the variable block-scoped.
+and run `speaker()`, we can now call `console.log(sentence)` outside of the `speaker` function because we have declared the variable `sentence` without the `var` keyword — it's now a global variable.
 
 ## Multi-line Variable Assignment
 
@@ -141,8 +92,8 @@ Let's condense the below code into one line:
 var a = 5;
 var b = 2;
 var c = 3;
-var d = {};
-var e = [];
+var d = 'hello';
+var e = 'goodbye';
 ```
 
 The above is equivalent to:
@@ -151,25 +102,23 @@ The above is equivalent to:
 var a = 5,
     b = 2,
     c = 3,
-    d = {},
-    e = [];
+    d = 'hello',
+    e = 'goodbye';
 ```
 
 which can be converted to:
 
 ```javascript
-var a = 5, b = 2, c = 3, d = {}, e = [];
+var a = 5, b = 2, c = 3, d = 'hello', e = 'goodbye';
 ```
 
-Try returning each variable in the console. You should see the appropriate values returned for each one.
+Try typing each variable in the console. You should see the appropriate values returned for each one.
 
-Some people prefer to keep new lines between each new variable assignment, other people like the look of the single line. Whichever way you swing, the important thing to remember is [to use commas to separate each variable](http://stackoverflow.com/a/4166789/2890716).
+Personally, we're of the opinion that it's best to declare each variable with its own `var` keyword. The comma fanciness saves a little bit of typing, but at the expense of nonstandard indentation (you're using two spaces, right?) and can introduce a bit of weirdness if we're doing anything other than simple assignment.
 
 ## Same Variable, Different Scopes
 
-Keep in mind too that the same variable name used in different scopes is effectively a different variable.
-We sometimes refer to repeating a variable name in an inner scope as "shadowing" — it's best to avoid,
-as you'll quickly see how confusing it can be:
+Keep in mind too that the same variable name used in different scopes is effectively a different variable. We sometimes refer to repeating a variable name in an inner scope as "shadowing" — it's best to avoid, as you'll quickly see how confusing it can be:
 
 ``` javascript
 var cuteAnimal = 'quokka';
@@ -187,8 +136,7 @@ cuteAnimal;
 
 ```
 
-See? Nothing breaks, but if you have a lot of shadowed variables (or even just a lot of space between a
-variable's initial declaration and its subsequent change(s)), you're gonna have a bad time.
+See? Nothing breaks, but if you have a lot of shadowed variables (or even just a lot of space between a variable's initial declaration and its subsequent change(s)), you're gonna have a bad time.
 
 ## Changing Variable Values
 
@@ -231,44 +179,6 @@ greeting
 // ReferenceError: greeting is not defined
 // This demonstrates that the variable greeting is still local instead of global
 ```
-
-## Function Expressions
-
-What, what's a section on functions doing in this variables lesson? Well, prepare for a mind-blowing revelation.
-
-![kapow](http://i.giphy.com/OK27wINdQS5YQ.gif)
-
-You can assign functions as a value to variables. This means that we can take this
-
-``` javascript
-function square(number) {
-  return number * number
-}
-```
-
-and combine it with this
-
-``` javascript
-const square // or `var square` or `let square`
-```
-
-to get this
-
-``` javascript
-const square = function square(number) {
-  return number * number
-}
-```
-
-Typically, we'll omit the name from the function in this case, because in this simple case JavaScript will pick up the name of the variable:
-
-``` javascript
-const square = function(number) {
-  return number * number
-}
-```
-
-But, as you can read about [here](https://kangax.github.io/nfe/#named-expr), sometimes giving the function in a function expression an identifier can be a good idea.
 
 ## Resources
 
