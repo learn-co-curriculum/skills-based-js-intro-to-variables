@@ -2,64 +2,16 @@
 
 ## Objectives
 
-- Declare a variable without assigning a value
-- Declare and define a variable
-- Explain multi-line variable assignment
+- Explain how variables are tied to their contexts
 - Explain how local and global variables differ
 
-## About
+## Introduction
 
-Variables in JavaScript are used to store data that will be used in our program. A variable can point to almost any type of value including numbers, strings, arrays, objects, and functions.
+Previously, we learned how variables become global when they aren't declared with the `var` keyword. The story is actually a little bit more interesting.
 
-Variables are assigned values using the `=` operator. Variable names are typically all lower case; in the case of multiple words, the words are joined together using [lowerCamelCase](http://c2.com/cgi/wiki?LowerCamelCase).
+Think of variables as notes on pieces of paper. Local variables are written normally, maybe on a post-it — they're for one person to see. Global variables, contrastingly, are written on postboard in big, bold letters — they're for everyone to see!
 
-## Declaring Variables
-
-Lets say I have the variable `word`. We could, if we wanted to, write
-
-``` javascript
-word = 'bird'
-```
-
-in order to create our variable and assign it the value of the string `'bird'`. Thing is, now we've declared a _global variable_. Global variables can be accessed anywhere in an application, which can lead to strange behavior. What if, for example, we wanted `word`'s value to be something other than `'bird'` at some point in the application? Or what if we needed to make use of a variable called `word` but not _this particular `word`_?
-
-In the browser, global variables are all properties of `window`. What is `window`? Well, it's the — erm — window in which the browser displays the current page. It holds a whole bunch of things (which is probably obvious), global variables among them.
-
-Clearly globals aren't the way to go.
-
-### `var`
-
-In the olden days (1995), JavaScript had one way to declare a non-global variable, `var`. Using the keyword `var` creates _local variable_, meaning that it is only accessible inside the current function in which it is declared. (If it's not declared inside a function, it's actually still global!)
-
-Here's how this works — follow along in your console!
-
-``` javascript
-// declare the variable
-var word;
-
-// assign a value to the variable
-word = 'bird';
-
-console.log(word); // 'bird'
-
-// assign another value to the variable
-word = 'dog';
-
-console.log(word) // 'dog'
-```
-
-Now we have declared a local variable `word`, and we can assign and reassign its value as we please.
-
-We can perform variable declaration and assignment on the same line to save space:
-
-``` javascript
-var word = 'bird';
-```
-
-What does it mean that `word` is a local variable? Well, if we're just entering it in the console, not much — the variable still becomes a property of `window`, just like global variables (as mentioned above). (Go ahead, try typing `window.word` in the console — prepare to be amazed!)
-
-But inside a function, things get more interesting. Variables in JavaScript have _function-level scope_, meaning that variables are bound to the function context in which they're declared. An example will make what we mean clearer.
-
+Variables in JavaScript have _function-level scope_, meaning that variables are bound to the function context in which they're declared. An example will make what we mean clearer.
 
 ``` javascript
 function speaker() {
@@ -81,40 +33,6 @@ function speaker() {
 ```
 
 and run `speaker()`, we can now call `console.log(sentence)` outside of the `speaker` function because we have declared the variable `sentence` without the `var` keyword — it's now a global variable.
-
-## Multi-line Variable Assignment
-
-Let's say I needed to declare and define multiple variables. It feels like a lot to have to repeat `var` over and over again. JavaScript allows us to do multi-line variable assignment to alleviate this pain. Every variable must be separated with a comma, and end the entire line must end with a semicolon.
-
-Let's condense the below code into one line:
-
-```javascript
-var a = 5;
-var b = 2;
-var c = 3;
-var d = 'hello';
-var e = 'goodbye';
-```
-
-The above is equivalent to:
-
-```javascript
-var a = 5,
-    b = 2,
-    c = 3,
-    d = 'hello',
-    e = 'goodbye';
-```
-
-which can be converted to:
-
-```javascript
-var a = 5, b = 2, c = 3, d = 'hello', e = 'goodbye';
-```
-
-Try typing each variable in the console. You should see the appropriate values returned for each one.
-
-Personally, we're of the opinion that it's best to declare each variable with its own `var` keyword. The comma fanciness saves a little bit of typing, but at the expense of nonstandard indentation (you're using two spaces, right?) and can introduce a bit of weirdness if we're doing anything other than simple assignment.
 
 ## Same Variable, Different Scopes
 
