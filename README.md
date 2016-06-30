@@ -27,7 +27,8 @@ If, however, we write
 
 ``` javascript
 function speaker() {
-  sentence = 'Bird is the word.';
+  sentence = 'Bird is the word.'; 
+}
 
   console.log(sentence);
 ```
@@ -106,3 +107,5 @@ greeting
 * [You Don't Know JS - Function vs. Block Scope](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch3.md)
 
 <p data-visibility='hidden'>View <a href='https://learn.co/lessons/intro-to-variables.js'>Intro To Variables in JS</a> on Learn.co and start learning to code for free.</p>
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/skills-based-js-intro-to-variables'>Variables</a> on Learn.co and start learning to code for free.</p>
