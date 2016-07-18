@@ -2,14 +2,14 @@
 
 ## Objectives
 
-- Explain how variables are tied to their contexts
-- Explain how local and global variables differ
+1. Explain how variables are tied to their contexts
+2. Explain how local and global variables differ
 
 ## Introduction
 
-Previously, we learned how variables become global when they aren't declared with the `var` keyword. The story is actually a little bit more interesting.
+In JavaScript, variables become global when they aren't declared with the `var` keyword. The story is actually a little bit more interesting.
 
-Think of variables as notes on pieces of paper. Local variables are written normally, maybe on a post-it — they're for one person to see. Global variables, contrastingly, are written on postboard in big, bold letters — they're for everyone to see!
+Think of variables as notes on pieces of paper. Local variables are written normally, maybe on a post-it — they're for one person to see. Global variables, contrastingly, are written on billboards in big, bold letters — they're for everyone to see!
 
 Variables in JavaScript have _function-level scope_, meaning that variables are bound to the function context in which they're declared. An example will make what we mean clearer.
 
@@ -17,7 +17,7 @@ Variables in JavaScript have _function-level scope_, meaning that variables are 
 function speaker() {
   var sentence = 'Bird is the word.';
 
-  console.log(sentence)
+  console.log(sentence);
 }
 ```
 
@@ -27,7 +27,7 @@ If, however, we write
 
 ``` javascript
 function speaker() {
-  sentence = 'Bird is the word.'; 
+  sentence = 'Bird is the word.';
 }
 
   console.log(sentence);
@@ -105,7 +105,5 @@ greeting
 * [MSDN - Variable Scope](https://msdn.microsoft.com/library/bzt2dkta(v=vs.94).aspx)
 * [StackOverflow - How to define multiple variables on a single line?](http://stackoverflow.com/q/4166785/2890716)
 * [You Don't Know JS - Function vs. Block Scope](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch3.md)
-
-<p data-visibility='hidden'>View <a href='https://learn.co/lessons/intro-to-variables.js'>Intro To Variables in JS</a> on Learn.co and start learning to code for free.</p>
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/skills-based-js-intro-to-variables'>Variables</a> on Learn.co and start learning to code for free.</p>
