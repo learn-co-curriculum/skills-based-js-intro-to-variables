@@ -30,7 +30,7 @@ function speaker() {
   sentence = 'Bird is the word.';
 }
 
-  console.log(sentence);
+console.log(sentence);
 ```
 
 and run `speaker()`, we can now call `console.log(sentence)` outside of the `speaker` function because we have declared the variable `sentence` without the `var` keyword — it's now a global variable.
