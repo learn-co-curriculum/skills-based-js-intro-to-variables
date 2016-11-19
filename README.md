@@ -98,6 +98,7 @@ greeting
 // ReferenceError: greeting is not defined
 // This demonstrates that the variable greeting is still local instead of global
 ```
+This scope discussion is still very confusing, I think because the variable greeting was not declared outside the function at the start.  Right?? [The function goToEleven says that volume variable becomes 11 globally; the sayHello example says the opposite: "the variable greeting is still local instead of global".]
 
 ## Resources
 
