@@ -2,18 +2,24 @@
 
 ## Objectives
 
-1. Explain how variables are tied to their contexts
-2. Explain how local and global variables differ
+- Explain how variables are tied to their contexts
+- Explain how local and global variables differ
 
 ## Introduction
 
-In JavaScript, variables become global when they aren't declared with the `var` keyword. The story is actually a little bit more interesting.
+In JavaScript, variables become global when they aren't declared with the `var`
+keyword. The story is actually a little bit more interesting.
 
-Think of variables as notes on pieces of paper. Local variables are written normally, maybe on a post-it — they're for one person to see. Global variables, contrastingly, are written on billboards in big, bold letters — they're for everyone to see!
+Think of variables as notes on pieces of paper. Local variables are written
+normally, maybe on a post-it — they're for one person to see. Global variables,
+contrastingly, are written on billboards in big, bold letters — they're for
+everyone to see!
 
-Variables in JavaScript have _function-level scope_, meaning that variables are bound to the function context in which they're declared. An example will make what we mean clearer.
+Variables in JavaScript have _function-level scope_, meaning that variables are
+bound to the function context in which they're declared. An example will make
+what we mean clearer.
 
-``` javascript
+```javascript
 function speaker() {
   var sentence = 'Bird is the word.';
 
@@ -21,11 +27,14 @@ function speaker() {
 }
 ```
 
-If we call `speaker()` in console, we'll see `'Bird is the word.'` logged out — all is well. But if we call `console.log(sentence)` outside of the `speaker` function, we'll get an error — the variable `sentence` is _bound_ to the context of the function `speaker`.
+If we call `speaker()` in console, we'll see `'Bird is the word.'` logged out —
+all is well. But if we call `console.log(sentence)` outside of the `speaker`
+function, we'll get an error — the variable `sentence` is _bound_ to the context
+of the function `speaker`.
 
 If, however, we write
 
-``` javascript
+```javascript
 function speaker() {
   sentence = 'Bird is the word.';
 }
@@ -34,13 +43,18 @@ speaker();
 console.log(sentence);
 ```
 
-and run `speaker()`, we can now call `console.log(sentence)` outside of the `speaker` function because we have declared the variable `sentence` without the `var` keyword — it's now a global variable.
+and run `speaker()`, we can now call `console.log(sentence)` outside of the
+`speaker` function because we have declared the variable `sentence` without the
+`var` keyword — it's now a global variable.
 
 ## Same Variable, Different Scopes
 
-Keep in mind too that the same variable name used in different scopes is effectively a different variable. We sometimes refer to repeating a variable name in an inner scope as "shadowing" — it's best to avoid, as you'll quickly see how confusing it can be:
+Keep in mind too that the same variable name used in different scopes is
+effectively a different variable. We sometimes refer to repeating a variable
+name in an inner scope as "shadowing" — it's best to avoid, as you'll quickly
+see how confusing it can be:
 
-``` javascript
+```javascript
 var cuteAnimal = 'quokka';
 
 function makeVariable() {
@@ -56,7 +70,9 @@ cuteAnimal;
 
 ```
 
-See? Nothing breaks, but if you have a lot of shadowed variables (or even just a lot of space between a variable's initial declaration and its subsequent change(s)), you're gonna have a bad time.
+See? Nothing breaks, but if you have a lot of shadowed variables (or even just a
+lot of space between a variable's initial declaration and its subsequent
+change(s)), you're gonna have a bad time.
 
 ## Changing Variable Values
 
@@ -82,7 +98,8 @@ goToEleven(); // returns 11
 volume; // the global variable volume has been changed to 11
 ```
 
-However, global variable assignment can't overwrite local variable assignment, rather it simply reassigns the value of the local variable:
+However, global variable assignment can't overwrite local variable assignment,
+rather it simply reassigns the value of the local variable:
 
 ```javascript
 function sayHello() {
