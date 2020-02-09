@@ -138,6 +138,6 @@ reassignment of the local `greeting` variable.
 * [MDN - Var Keyword](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/var)
 * [MSDN - Variable Scope](https://msdn.microsoft.com/library/bzt2dkta(v=vs.94).aspx)
 * [StackOverflow - How to define multiple variables on a single line?](http://stackoverflow.com/q/4166785/2890716)
-* [You Don't Know JS - Function vs. Block Scope](https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20%26%20closures/ch3.md)
+* [Function vs. Block Scope](https://medium.com/@josephcardillo/the-difference-between-function-and-block-scope-in-javascript-4296b2322abe)
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/skills-based-js-intro-to-variables'>Variables</a> on Learn.co and start learning to code for free.</p>
