@@ -27,6 +27,9 @@ function speaker() {
 }
 ```
 
+Above is an example of a _local_ variable - it is defined within a function and
+will not be accessible outside of the function.
+
 If we call `speaker()` in console, we'll see `'Bird is the word.'` logged out —
 all is well. But if we call `console.log(sentence)` outside of the `speaker`
 function, we'll get an error — the variable `sentence` is _bound_ to the context
@@ -98,8 +101,17 @@ goToEleven(); // returns 11
 volume; // the global variable volume has been changed to 11
 ```
 
-However, global variable assignment can't overwrite local variable assignment,
-rather it simply reassigns the value of the local variable:
+Notice that in the first function above, a local variable, `var volume` is
+declared and assigned to `11`, but the global `volume` remains unchanged.
+
+However, in the _second_ function, the `volume` variable does not have `var` in
+front of it. JavaScript considers this to be a reassignment of the  existing
+`volume` global variable. Ther esult is that the global `volume` variable gets
+reassigned.
+
+Moving in the opposte direction, global variable assignment cannot overwrite
+local variable assignment, rather it simply reassigns the value of the local
+variable:
 
 ```javascript
 function sayHello() {
@@ -116,6 +128,10 @@ greeting
 // ReferenceError: greeting is not defined
 // This demonstrates that the variable greeting is still local instead of global
 ```
+
+Since `greeting = "hello"` is in the same scope and follows
+`var greeting = "hola"` in sequence, JavaScript understands this to be a
+reassignment of the local `greeting` variable.
 
 ## Resources
 
