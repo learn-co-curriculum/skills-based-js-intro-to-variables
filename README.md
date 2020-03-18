@@ -106,7 +106,7 @@ declared and assigned to `11`, but the global `volume` remains unchanged.
 
 However, in the _second_ function, the `volume` variable does not have `var` in
 front of it. JavaScript considers this to be a reassignment of the  existing
-`volume` global variable. Ther esult is that the global `volume` variable gets
+`volume` global variable. The result is that the global `volume` variable gets
 reassigned.
 
 Moving in the opposte direction, global variable assignment cannot overwrite
